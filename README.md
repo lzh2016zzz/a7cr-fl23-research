@@ -1,5 +1,7 @@
 # a7cr-fl23-research
 
+**English** · [简体中文入口](README.zh-CN.md)
+
 Research notes on porting the FL2/FL3 still-photo Creative Looks to Sony ILCE-7CR Ver.2.01, using parameters from the Alpha 1 II (ILCE-1M2) Ver.4.00. Updated: 2026-10-16. This document covers the implementation approach, key offsets and values, operation sequence, and validation and troubleshooting.
 
 ## Disclaimer
@@ -234,3 +236,26 @@ The following repositories informed firmware extraction, protocol research, and 
 | [exiftool/exiftool](https://github.com/exiftool/exiftool) | Sony MakerNote decoding and verification of CreativeStyle, PictureProfile, and ColorMode fields in captured photos. |
 
 Credit belongs to the respective authors and contributors. Each upstream project retains its own license; see the linked repositories for their terms. These links document research sources and do not imply upstream endorsement of this port.
+
+## 8. Downstream reproducible Creative Look workflow
+
+An independent [agent-neutral A7CR tool extension](https://github.com/littleben/a7cr-creative-look-tools)
+builds on these A7CR findings, injectiver's research source and QAQLeonard's DCP/
+native-worker foundations. It provides Python/JSON project commands, shared
+AGENTS.md instructions and English/Chinese READMEs. Firmware inputs, original
+profiles, per-body calibration, backups and photographs stay local.
+
+The downstream implementation reports one A7CR 2.01 on Apple Silicon macOS with
+native FL2/FL3, a single-slot Classic Chrome adaptation, then incremental PRO
+Neg. Std and ASTIA slots while retaining the first look. Full AP/CP and 68-name
+resource readback, new-boot loaded AP checks, saved/native ST and new JPEG custom
+markers were verified. The recent portrait-look samples are still life, not a
+skin-tone or original-Fujifilm color-matching test. Complete physical restoration
+has not been exercised.
+
+The portable source interface supports explicit checkpoints, local fitting and
+asset checks, per-body preparation, installation, read-only verification and
+exact inverses. It does not turn these notes into a universal installer or alter
+the existing outstanding validation. An ordinary-USB exit timeout is distinct
+from an unknown write: only the completely evidenced case can proceed to a new
+cold-start read-only verification, preserving the original failure history.
